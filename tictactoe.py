@@ -40,12 +40,13 @@ def checkRows(board):
         if len(set(board[i])) == 1 and "-" not in set(board[i]):
             winner = board[i][0]
             return True
-        
+
 def checkColumns(board):
     global winner        
-    for i in range(len(board)):
-        if len(set(board[:][i])) == 1 and "-" not in set(board[:][i]):
-            winner = board[0][i]
+    for col in range(len(board)):
+        coluna = [board[linha][col] for linha in range(len(board))]
+        if len(set(coluna)) == 1 and "-" not in set(coluna):
+            winner = board[0][col]
             return True
 
 def checkDiag(board):
@@ -56,7 +57,7 @@ def checkDiag(board):
     elif len(set(board[i][len(board) - 1 - i] for i in range(len(board)))) == 1 and board[0][2] != "-":
         winner = board[0][2]
         return True
-    
+
 # CHECK RESULT
 def checkResult():
     global gameRunning
